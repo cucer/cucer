@@ -3,7 +3,7 @@
 <h1 align="center">Hi 👋, I'm Cagatay</h1>
 <h3 align="center">A passionate full-stack developer from Turkey</h3>
 
-<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=cucer" alt="cucer" /></a> </p>
+<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=cucer&theme=dracula" alt="cucer" /></a> </p>
 
 - 🔭 Founder of [Jectask](https://www.jectask.com)
 

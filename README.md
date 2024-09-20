@@ -9,7 +9,7 @@
 
 - 🌱 I’m currently learning **Java & Spring**
 
-- 👨‍💻 All of my projects are available at [https://cagatayucer.com](https://cagatayucer.com)
+- 👨‍💻 Checkout my portfolio at [https://cagatayucer.com](cagatayucer.com)
 
 - 💬 Ask me about **React, Redux, Node, Express, Oracle**
 

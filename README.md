@@ -9,11 +9,11 @@
 
 - 🌱 I’m currently learning **Java & Spring**
 
-- 👨‍💻 Checkout my portfolio at [https://cagatayucer.com](cagatayucer.com)
+- 👨‍💻 Checkout my portfolio at [cagatayucer.com](https://cagatayucer.com)
 
 - 💬 Ask me about **React, Redux, Node, Express, Oracle**
 
-- 📫 How to reach me **https://www.linkedin.com/in/cagatayucer/**
+- 📫 How to reach me **linkedin.com/in/cagatayucer/**
 
 - ⚡ Fun fact **I like djing**
 

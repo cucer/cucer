@@ -14,10 +14,6 @@
 - ⚡ Fun fact **I like djing**
 
 ## 🔗 Links
-[![portfolio](https://cagatayucer.com)
-[![linkedin](https://www.linkedin.com/in/cagatayucer/)
-[![youtube](https://www.youtube.com/@cagatayucer)
-
 <p align="left">
 <a href="https://linkedin.com/in/cagatayucer" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="cagatayucer" height="30" width="40" /></a>
 <a href="https://www.youtube.com/@cagatayucer" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/youtube.svg" alt="cagatayucer" height="30" width="40" /></a>

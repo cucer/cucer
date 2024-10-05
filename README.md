@@ -11,7 +11,7 @@
 
 - 👨‍💻 Checkout my portfolio at [cagatayucer.com](https://cagatayucer.com)
 
-- ⚡ Fun fact **I like djing**
+- ⚡ **I like djing**
 
 </br>
 

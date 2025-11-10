@@ -1,4 +1,4 @@
-![Logo](https://cagatayucer.com/cgty_banner.png)
+<!-- ![Logo](https://cagatayucer.com/cgty_banner.png) -->
 
 <h1 align="center">Hi 👋, I'm Cagatay</h1>
 <h3 align="center">A passionate full-stack developer from Turkey</h3>
@@ -7,7 +7,7 @@
 
 - 🌱 I’m currently working on **Google Cloud Platform**
 
-- 👨‍💻 Checkout my portfolio at [cagatayucer.com](https://cagatayucer.com)
+<!-- - 👨‍💻 Checkout my portfolio at [cagatayucer.com](https://cagatayucer.com) -->
 
 </br>
 
@@ -39,16 +39,16 @@ Javascript, Typescript, React, NextJS, Redux, Node, Express, MongoDB, Oracle, Go
 
 </br>
 
-## 🔗 My Own Product
+<!-- ## 🔗 My Own Product
 
-![Logo](https://cagatayucer.com/jectask_banner.png)
+![Logo](https://cagatayucer.com/jectask_banner.png) -->
 
-## 🌟 What is Jectask?
+<!-- ## 🌟 What is Jectask?
 
-Jectask is a non-profit application and is completely free. Jectask brings all your ideas, projects and tasks together easily. You can turn every idea into a success project! It helps you plan your projects, track tasks efficiently wherever you are.  Try [Jectask](https://www.jectask.com) for free now!
-
+Jectask is a non-profit application and is completely free. Jectask brings all your ideas, projects and tasks together easily. You can turn every idea into a success project! It helps you plan your projects, track tasks efficiently wherever you are. Try [Jectask](https://www.jectask.com) for free now!
 
 **Key Features:**
+
 - **No-Ads**
 - **Multi-Language App**
 - **Fullscreen mode**
@@ -95,5 +95,4 @@ No installation required!
 </br>
 </br>
 
-![Pake](https://cagatayucer.com/jectask_gif.gif)
-
+![Pake](https://cagatayucer.com/jectask_gif.gif) -->

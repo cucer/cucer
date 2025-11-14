@@ -10,11 +10,19 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="loading-overlay" id="loadingOverlay">
-    <div class="loading-content">
-      <div class="spinner"></div>
-      <p>Loading experience...</p>
+  <div class="splash-screen" id="splashScreen" aria-hidden="true">
+    <div class="splash-inner">
+      <div class="splash-logo">
+        <img src="assets/cagatay_ucer_logo.webp" alt="Cagatay Ucer logo">
+      </div>
+      <p class="splash-title">Cagatay Ucer</p>
+      <p class="splash-tagline">Setting the stage for the next drop</p>
+      <div class="splash-progress" role="progressbar" aria-label="Preparing site">
+        <span class="splash-progress-bar"></span>
+      </div>
+      <small class="splash-note">Almost there...</small>
     </div>
+    <div class="splash-glow"></div>
   </div>
 
   <main class="hero">

@@ -1,4 +1,4 @@
-<!-- ![Logo](https://cagatayucer.com/cgty_banner.png) -->
+<!-- ![Logo](https://cagatayucer.com/cgty_banner.webp) -->
 
 <h1 align="center">Hi 👋, I'm Cagatay</h1>
 <h3 align="center">A passionate full-stack developer from Turkey</h3>
@@ -41,7 +41,7 @@ Javascript, Typescript, React, NextJS, Redux, Node, Express, MongoDB, Oracle, Go
 
 <!-- ## 🔗 My Own Product
 
-![Logo](https://cagatayucer.com/jectask_banner.png) -->
+![Logo](https://cagatayucer.com/jectask_banner.webp) -->
 
 <!-- ## 🌟 What is Jectask?
 

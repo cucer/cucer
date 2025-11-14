@@ -1,0 +1,27 @@
+# macOS user files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+
+# macOS thumbnail caches
+._*
+.Spotlight-V100
+.Trashes
+
+# Editor swap/backup files
+*.swp
+*.swo
+*~
+
+# Local environment overrides
+.env
+.env.*
+*.local
+
+# Build / cache folders for static tooling (if introduced later)
+dist/
+build/
+.cache/
+.parcel-cache/
+node_modules/

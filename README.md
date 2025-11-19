@@ -1,9 +1,9 @@
-<!-- ![Logo](https://cagatayucer.com/cgty_banner.webp) -->
+![Logo](./assets/cgty_banner.webp)
 
 <h1 align="center">Hi 👋, I'm Cagatay</h1>
 <h3 align="center">A passionate full-stack developer from Turkey</h3>
 
-<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=cucer&theme=dracula" alt="cucer" /></a> </p>
+<!-- <p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=cucer&theme=dracula" alt="cucer" /></a> </p> -->
 
 - 🌱 I’m currently working on **Google Cloud Platform**
 
@@ -39,11 +39,11 @@ Javascript, Typescript, React, NextJS, Redux, Node, Express, MongoDB, Oracle, Go
 
 </br>
 
-<!-- ## 🔗 My Own Product
+## 🔗 My Own Product
 
-![Logo](https://cagatayucer.com/jectask_banner.webp) -->
+![Logo](./assets/jectask_banner.webp)
 
-<!-- ## 🌟 What is Jectask?
+## 🌟 What is Jectask?
 
 Jectask is a non-profit application and is completely free. Jectask brings all your ideas, projects and tasks together easily. You can turn every idea into a success project! It helps you plan your projects, track tasks efficiently wherever you are. Try [Jectask](https://www.jectask.com) for free now!
 
@@ -79,20 +79,16 @@ No installation required!
 
 <table>
     <tr>
-        <td><img src=https://cagatayucer.com/jectask_dashhboard.png width=600/></td>
-        <td><img src=https://cagatayucer.com/jectask_projects.png width=600/></td>
+        <td><img src=./assets/jectask_dashhboard.webp width=600/></td>
+        <td><img src=./assets/jectask_calendar.webp width=600/></td>
     </tr>
     <tr>
-        <td><img src=https://cagatayucer.com/jectask_tasks.png width=600/></td>
-        <td><img src=https://cagatayucer.com/jectask_notes.png width=600/></td>
-    </tr>
-    <tr>
-        <td><img src=https://cagatayucer.com/jectask_calendar.png width=600/></td>
-        <td><img src=https://cagatayucer.com/jectask_contacts.png width=600/></td>
+        <td><img src=./assets/jectask_tasks.webp width=600/></td>
+        <td><img src=./assets/jectask_notes.webp width=600/></td>
     </tr>
 </table>
 
 </br>
 </br>
 
-![Pake](https://cagatayucer.com/jectask_gif.gif) -->
+![Pake](./assets/jectask.gif)

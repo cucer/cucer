@@ -327,7 +327,7 @@ header {
 }
 
 .eyebrow {
-  font-size: 0.95rem;
+  font-size: 1.5rem;
   letter-spacing: 0.35em;
   text-transform: uppercase;
   color: var(--accent);
@@ -454,7 +454,7 @@ header {
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 0.3em;
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: rgba(206, 91, 255, 0.85);
 }
 

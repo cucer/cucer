@@ -200,3 +200,6 @@ if (mouseOrb && !prefersReducedMotion) {
   });
   animateOrb();
 }
+
+// Disable right-click context menu across the site
+window.addEventListener('contextmenu', (event) => event.preventDefault());

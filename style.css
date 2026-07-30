@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap');
+/* Inter is loaded via <link> in index.html — an @import here would serialize
+   the font request behind this stylesheet and delay first paint. */
 
 :root {
   color-scheme: dark;
@@ -469,7 +470,7 @@ header {
   color: rgba(206, 91, 255, 0.85);
 }
 
-.panel-content h3 {
+.panel-content h2 {
   margin: 0;
   font-size: 2rem;
   font-weight: 400;
@@ -575,6 +576,14 @@ header {
   margin: 0.25rem 0 0.75rem;
   font-size: clamp(1.9rem, 4.5vw, 2.7rem);
   font-weight: 300;
+}
+
+/* The section label doubles as the section's h2 for heading structure,
+   so it keeps the eyebrow look rather than the heading look. */
+.section-intro h2.eyebrow {
+  margin: 1.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 400;
 }
 
 .portfolio-list {

@@ -3,7 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cagatay Ucer</title>
+
+    <title>Cagatay Ucer — Web &amp; App Developer | React &amp; Next.js</title>
+    <meta
+      name="description"
+      content="Cagatay Ucer builds web and mobile products with React, React Native, Next.js and Node.js — from roadmap and project management through to launch."
+    />
+    <link rel="canonical" href="https://cagatayucer.com/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Cagatay Ucer" />
+    <meta name="theme-color" content="#070707" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Cagatay Ucer" />
+    <meta property="og:url" content="https://cagatayucer.com/" />
+    <meta
+      property="og:title"
+      content="Cagatay Ucer — Web &amp; App Developer | React &amp; Next.js"
+    />
+    <meta
+      property="og:description"
+      content="Web and mobile products built with React, React Native, Next.js and Node.js — from roadmap and project management through to launch."
+    />
+    <meta
+      property="og:image"
+      content="https://cagatayucer.com/assets/og-image.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Cagatay Ucer — Web &amp; App Developer"
+    />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Cagatay Ucer — Web &amp; App Developer | React &amp; Next.js"
+    />
+    <meta
+      name="twitter:description"
+      content="Web and mobile products built with React, React Native, Next.js and Node.js — from roadmap and project management through to launch."
+    />
+    <meta
+      name="twitter:image"
+      content="https://cagatayucer.com/assets/og-image.jpg"
+    />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -30,13 +79,44 @@
         "@graph": [
           {
             "@type": "WebSite",
+            "@id": "https://cagatayucer.com/#website",
             "name": "Cagatay Ucer",
-            "url": "https://cagatayucer.com",
-            "potentialAction": {
-              "@type": "SearchAction",
-              "target": "https://cagatayucer.com/?q={search_term_string}",
-              "query-input": "required name=search_term_string"
-            }
+            "url": "https://cagatayucer.com/",
+            "inLanguage": "en",
+            "publisher": { "@id": "https://cagatayucer.com/#person" }
+          },
+          {
+            "@type": "ProfilePage",
+            "@id": "https://cagatayucer.com/#webpage",
+            "url": "https://cagatayucer.com/",
+            "name": "Cagatay Ucer — Web & App Developer",
+            "isPartOf": { "@id": "https://cagatayucer.com/#website" },
+            "about": { "@id": "https://cagatayucer.com/#person" },
+            "primaryImageOfPage": "https://cagatayucer.com/assets/og-image.jpg",
+            "inLanguage": "en"
+          },
+          {
+            "@type": "Person",
+            "@id": "https://cagatayucer.com/#person",
+            "name": "Cagatay Ucer",
+            "url": "https://cagatayucer.com/",
+            "image": "https://cagatayucer.com/assets/logo.webp",
+            "jobTitle": "Web & App Developer",
+            "description": "Web and mobile developer building products with React, React Native, Next.js and Node.js, alongside agile project management.",
+            "knowsAbout": [
+              "Web Development",
+              "App Development",
+              "React",
+              "React Native",
+              "Next.js",
+              "Node.js",
+              "Project Management",
+              "Digital Marketing"
+            ],
+            "sameAs": [
+              "https://www.linkedin.com/in/cagatayucer",
+              "https://github.com/cucer"
+            ]
           }
         ]
       }
@@ -48,7 +128,13 @@
     <div class="splash-screen" id="splashScreen" aria-hidden="true">
       <div class="splash-inner">
         <div class="splash-logo">
-          <img src="assets/logo.webp" alt="logo" />
+          <img
+            src="assets/logo.webp"
+            alt=""
+            width="500"
+            height="500"
+            aria-hidden="true"
+          />
         </div>
         <p class="splash-title">Cagatay Ucer</p>
         <p class="splash-tagline">Setting the stage for the next drop</p>
@@ -68,7 +154,12 @@
       <header>
         <div class="header-mobile">
           <div class="logo-sigil">
-            <img src="assets/logo.webp" alt="logo" />
+            <img
+              src="assets/logo.webp"
+              alt="Cagatay Ucer logo"
+              width="500"
+              height="500"
+            />
           </div>
           <button
             class="hamburger"
@@ -83,7 +174,12 @@
 
         <div class="header-desktop">
           <div class="logo-sigil">
-            <img src="assets/logo.webp" alt="logo" />
+            <img
+              src="assets/logo.webp"
+              alt="Cagatay Ucer logo"
+              width="500"
+              height="500"
+            />
           </div>
         </div>
       </header>
@@ -188,7 +284,7 @@
           <div class="mouse-orb" aria-hidden="true"></div>
           <div class="hero-wrapper">
             <div class="hero-copy">
-              <p class="eyebrow">APP&WEB Development</p>
+              <p class="eyebrow">APP&amp;WEB Development</p>
               <h1>
                 Old-school craftsmanship,<br />
                 powered by modern AI tooling.
@@ -206,7 +302,7 @@
                 <div class="panel-grid"></div>
                 <div class="panel-content">
                   <p class="panel-label">Full-cycle orchestration</p>
-                  <h3>Projects, web, and apps</h3>
+                  <h2>Projects, web, and apps</h2>
                   <ul class="panel-stats">
                     <li>
                       <span>01</span>Project management: roadmap rituals, risk
@@ -229,8 +325,7 @@
 
         <section id="portfolio" class="portfolio">
           <div class="section-intro">
-            <p class="eyebrow">Portfolio</p>
-            <!-- <h2>Crafted drops & live builds</h2> -->
+            <h2 class="eyebrow">Portfolio</h2>
             <p class="lede">
               Delivering standout fintech, marketplace, and creative products,
               each designed to showcase tangible performance gains.
@@ -242,8 +337,11 @@
               <div class="card-media">
                 <img
                   src="assets/projects/web_development.webp"
-                  alt="CGTY Commerce re-platform image"
+                  alt="Web development — React storefront backed by a Node.js core"
+                  width="1200"
+                  height="800"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div class="card-content">
@@ -260,8 +358,11 @@
               <div class="card-media">
                 <img
                   src="assets/projects/app_development.webp"
-                  alt="Realtime ops dashboard visual"
+                  alt="App development — React Native command center interface"
+                  width="1200"
+                  height="799"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div class="card-content">
@@ -277,8 +378,11 @@
               <div class="card-media">
                 <img
                   src="assets/projects/project_management.webp"
-                  alt="workflow automation snapshot"
+                  alt="Project management — agile sprint board and burndown reporting"
+                  width="1200"
+                  height="821"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div class="card-content">
@@ -295,8 +399,11 @@
               <div class="card-media">
                 <img
                   src="assets/projects/digital_marketing.webp"
-                  alt="Immersive hero visuals for launch site"
+                  alt="Digital marketing — landing page campaign and reporting visuals"
+                  width="1200"
+                  height="821"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div class="card-content">
@@ -313,7 +420,7 @@
 
       <footer class="site-footer">
         <p>
-          © 2010 <span class="footer-name">Cagatay Ucer</span>. All rights
+          © 2010–2026 <span class="footer-name">Cagatay Ucer</span>. All rights
           reserved.
         </p>
       </footer>

@@ -253,6 +253,7 @@ header {
   position: relative;
   min-height: calc(100vh - 60px);
   overflow: hidden;
+  display: flex;
 }
 
 #sparks {
@@ -312,7 +313,9 @@ header {
 .hero-wrapper {
   position: relative;
   z-index: 1;
-  height: 100%;
+  /* flex:1 rather than height:100% — a percentage height cannot resolve
+     against the parent's min-height, which left dead space below the hero. */
+  flex: 1;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   align-items: center;
@@ -332,6 +335,13 @@ header {
   letter-spacing: 0.35em;
   text-transform: uppercase;
   color: var(--accent);
+}
+
+/* The hero eyebrow carries the full brand line, so it runs longer than a
+   section label and needs tighter tracking to stay on one line at 560px. */
+.hero-copy .eyebrow {
+  font-size: 0.95rem;
+  letter-spacing: 0.28em;
 }
 
 .hero-copy h1 {
@@ -560,6 +570,228 @@ header {
   }
 }
 
+/* AI band */
+.ai-band {
+  position: relative;
+  overflow: hidden;
+  /* The hero already leaves a tall gap below its centred content, so this
+     section only needs a small top padding of its own. */
+  padding: clamp(1.25rem, 2vw, 1.5rem) clamp(1.5rem, 7vw, 8rem) 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4vw, 3rem);
+}
+
+.ai-glow {
+  position: absolute;
+  left: 8%;
+  bottom: -45%;
+  width: min(680px, 80%);
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(206, 91, 255, 0.16),
+    rgba(138, 243, 251, 0.06) 45%,
+    transparent 70%
+  );
+  filter: blur(50px);
+  pointer-events: none;
+  animation: aiGlowDrift 16s ease-in-out infinite alternate;
+}
+
+@keyframes aiGlowDrift {
+  from {
+    transform: translate3d(-6%, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(14%, -8%, 0) scale(1.12);
+  }
+}
+
+/* Pipeline rail: Prompt -> Retrieval -> Model -> Tools -> Product */
+.ai-pipeline {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  isolation: isolate;
+}
+
+/* The rail itself, plus a pulse that travels along it. */
+.ai-pipeline::before,
+.ai-pipeline::after {
+  content: '';
+  position: absolute;
+  top: 7px;
+  height: 1px;
+  left: 10%;
+  right: 10%;
+}
+
+.ai-pipeline::before {
+  background: linear-gradient(
+    90deg,
+    rgba(138, 243, 251, 0.05),
+    rgba(138, 243, 251, 0.3),
+    rgba(206, 91, 255, 0.3),
+    rgba(206, 91, 255, 0.05)
+  );
+}
+
+.ai-pipeline::after {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent) 45%,
+    #ce5bff 55%,
+    transparent
+  );
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+  transform: scaleX(0.18);
+  transform-origin: left center;
+  animation: aiPulseTravel 4.2s cubic-bezier(0.6, 0, 0.35, 1) infinite;
+}
+
+@keyframes aiPulseTravel {
+  0% {
+    transform: translateX(-8%) scaleX(0.14);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(560%) scaleX(0.14);
+    opacity: 0;
+  }
+}
+
+.ai-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  text-align: center;
+}
+
+.ai-dot {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #070c18;
+  border: 1px solid rgba(138, 243, 251, 0.5);
+  box-shadow: 0 0 0 4px rgba(7, 12, 24, 0.9);
+}
+
+/* Each node lights up as the pulse passes it. */
+.ai-dot::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.25;
+  animation: aiDotPulse 4.2s ease-in-out infinite;
+  animation-delay: var(--ai-step-delay, 0ms);
+}
+
+@keyframes aiDotPulse {
+  0%,
+  70%,
+  100% {
+    opacity: 0.2;
+    box-shadow: 0 0 0 0 rgba(138, 243, 251, 0);
+  }
+  12% {
+    opacity: 1;
+    box-shadow: 0 0 12px 2px rgba(138, 243, 251, 0.55);
+  }
+}
+
+.ai-step-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.ai-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.ai-card {
+  padding: clamp(1.3rem, 2.6vw, 1.8rem);
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(
+    160deg,
+    rgba(5, 12, 27, 0.92),
+    rgba(6, 14, 32, 0.62)
+  );
+  transition: transform 0.45s ease, border-color 0.45s ease,
+    box-shadow 0.45s ease, opacity 0.6s ease;
+}
+
+.ai-card.card-animated {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  transition-delay: var(--card-stagger, 0ms);
+}
+
+.ai-card.card-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition-delay: 0s;
+}
+
+.ai-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(206, 91, 255, 0.4);
+  box-shadow: 0 28px 55px rgba(0, 0, 0, 0.5);
+}
+
+.ai-card h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: #ce5bff;
+}
+
+.ai-card p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-glow,
+  .ai-pipeline::after,
+  .ai-dot::after {
+    animation: none;
+  }
+
+  .ai-pipeline::after {
+    opacity: 0;
+  }
+}
+
 /* Portfolio */
 .portfolio {
   padding: clamp(3rem, 8vw, 5rem) clamp(1.5rem, 7vw, 8rem) 4rem;
@@ -670,14 +902,33 @@ header {
 }
 
 @media (max-width: 1100px) {
-  .portfolio-list {
+  .portfolio-list,
+  .ai-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 640px) {
-  .portfolio-list {
+  .portfolio-list,
+  .ai-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Five labels will not fit across a phone, so the rail wraps to two rows
+     and the travelling pulse is dropped rather than left running off-track. */
+  .ai-pipeline {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 1.6rem;
+  }
+
+  .ai-pipeline::before,
+  .ai-pipeline::after {
+    display: none;
+  }
+
+  .ai-step-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
   }
 
   .portfolio-card.card-visible .card-media {
@@ -721,6 +972,11 @@ header {
 
   .hero-copy h1 {
     font-size: clamp(2rem, 7vw, 3.4rem);
+  }
+
+  .hero-copy .eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 0.22em;
   }
 
   .lede {

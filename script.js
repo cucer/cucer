@@ -12,6 +12,8 @@ const heroRevealTargets = [
 ];
 
 const portfolioCards = document.querySelectorAll('.portfolio-card');
+const aiCards = document.querySelectorAll('.ai-card');
+const aiSteps = document.querySelectorAll('.ai-step');
 
 const mobileSidebar = document.querySelector('.mobile-sidebar');
 const hamburger = document.querySelector('.hamburger');
@@ -49,16 +51,16 @@ window.addEventListener('load', () => {
 setTimeout(hideSplash, 4000);
 setTimeout(revealHero, 2200);
 
-const initCardReveal = () => {
-  if (!portfolioCards.length) return;
+const initCardReveal = (cards) => {
+  if (!cards.length) return;
 
-  portfolioCards.forEach((card, index) => {
+  cards.forEach((card, index) => {
     card.classList.add('card-animated');
     card.style.setProperty('--card-stagger', `${index * 90}ms`);
   });
 
   if (prefersReducedMotion || !('IntersectionObserver' in window)) {
-    portfolioCards.forEach((card) => card.classList.add('card-visible'));
+    cards.forEach((card) => card.classList.add('card-visible'));
     return;
   }
 
@@ -74,7 +76,17 @@ const initCardReveal = () => {
     { threshold: 0.22, rootMargin: '0px 0px -10% 0px' }
   );
 
-  portfolioCards.forEach((card) => observer.observe(card));
+  cards.forEach((card) => observer.observe(card));
+};
+
+/* Stagger each pipeline node so it lights up as the rail pulse reaches it.
+   The delays are fractions of the 4.2s aiPulseTravel cycle. */
+const initAiPipeline = () => {
+  aiSteps.forEach((step, index) => {
+    step
+      .querySelector('.ai-dot')
+      ?.style.setProperty('--ai-step-delay', `${index * 460}ms`);
+  });
 };
 
 /* Star field */
@@ -132,7 +144,9 @@ if (starCanvas) {
   initStars();
 }
 
-initCardReveal();
+initCardReveal(portfolioCards);
+initCardReveal(aiCards);
+initAiPipeline();
 
 /* Cursor orb + parallax */
 const parallaxItems = document.querySelectorAll('[data-parallax]');

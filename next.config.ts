@@ -19,6 +19,12 @@ const nextConfig: NextConfig = {
     process.env.NODE_ENV === 'development'
       ? ['dev.tsx', 'tsx', 'ts', 'jsx', 'js']
       : ['tsx', 'ts', 'jsx', 'js'],
+  experimental: {
+    /* Turns on app/global-not-found.tsx. Required here because the app has two
+       root layouts — (site) and (demos) — so a plain not-found.tsx has no
+       single layout to render inside. */
+    globalNotFound: true,
+  },
 };
 
 export default nextConfig;

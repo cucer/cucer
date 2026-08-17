@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1400" preserveAspectRatio="none">
+  <!--
+    Used as a CSS mask, never drawn directly: the strokes are white so they let
+    the gold gradient through, everything else is transparent and stays hidden.
+    Colour therefore lives in the stylesheet and follows the palette.
+
+    Two sweeping left-to-right arcs in a 1400-unit tile — roughly one per screen
+    of scrolling, which keeps them a nuance rather than a pattern. They sit ~690
+    apart, and the gap to the next tile's first arc is about the same, so the
+    repeat never lines up into a rhythm.
+
+    Widths are authored a little heavy because preserveAspectRatio="none"
+    squashes the 1200-unit viewBox into a phone width and thins every line with
+    it — 2.2-2.4 here lands near a hairline on a phone and about 2px on a
+    desktop.
+  -->
+  <g fill="none" stroke="#fff" stroke-linecap="round">
+    <path d="M-60 260 C 240 170, 640 360, 1270 230" stroke-width="2.2" opacity="0.9"/>
+    <path d="M-60 950 C 260 880, 600 1060, 1265 910" stroke-width="2.4" opacity="0.85"/>
+  </g>
+</svg>

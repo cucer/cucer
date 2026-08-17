@@ -1,0 +1,874 @@
+/* Editorial full-bleed layout: alternating white / colour-band / photograph
+   blocks, hard edges, no cards and no shadows. Copy is centred at a narrow
+   measure; the photographs carry the weight.
+
+   The QR menu at /menu is the exception — it is a phone document first and
+   only borrows the palette and type. */
+
+/* ---------- Masthead ---------- */
+
+/* No navigation and nothing else on the row, so the mark simply sits in the
+   middle. Not sticky: on a one-pager there is nothing for a fixed bar to do
+   except eat the top of every photograph. */
+.masthead {
+  background: var(--demo-band);
+  color: var(--demo-on-band);
+  padding: clamp(1.4rem, 3.5vw, 2.2rem) 1.5rem;
+}
+
+.mastheadBrand,
+.footerMark {
+  display: grid;
+  justify-items: center;
+  gap: 0.4rem;
+}
+
+.mastheadBrand img {
+  height: clamp(38px, 6vw, 52px);
+  width: auto;
+}
+
+.brandName {
+  font-family: var(--demo-display), Georgia, serif;
+  font-size: clamp(1.05rem, 3vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  /* Tracking adds a trailing gap that breaks optical centring. */
+  text-indent: 0.24em;
+}
+
+.brandTagline {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--demo-on-band-muted);
+  text-indent: 0.18em;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  background: var(--demo-surface);
+}
+
+.heroTrack {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.heroTrack::-webkit-scrollbar {
+  display: none;
+}
+
+.heroSlide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
+.heroSlide > * {
+  width: 100%;
+  height: clamp(320px, 62vh, 620px);
+}
+
+.heroDots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.9rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.heroDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+}
+
+.heroDotActive {
+  background: #fff;
+}
+
+/* ---------- Blocks ---------- */
+
+.block {
+  padding: clamp(3.2rem, 8vw, 6rem) clamp(1.25rem, 6vw, 4rem);
+  background: var(--demo-bg);
+  color: var(--demo-text);
+  position: relative;
+  overflow: hidden;
+}
+
+.blockBand {
+  background: var(--demo-band);
+  color: var(--demo-on-band);
+}
+
+.blockCenter {
+  text-align: center;
+}
+
+/* Narrow measure — the reference never lets a line run wide. */
+.measure {
+  max-width: 46ch;
+  margin: 0 auto;
+}
+
+.heading {
+  font-family: var(--demo-display), Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(1.6rem, 5vw, 2.5rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 0 0 1.4rem;
+  line-height: 1.2;
+}
+
+.blockBand .heading {
+  color: var(--demo-on-band);
+}
+
+.body p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--demo-muted);
+}
+
+.body p + p {
+  margin-top: 0.9rem;
+}
+
+.blockBand .body p {
+  color: var(--demo-on-band-muted);
+}
+
+.lead {
+  margin-top: 1.2rem;
+  font-weight: 700;
+  color: var(--demo-text);
+}
+
+.blockBand .lead {
+  color: var(--demo-on-band);
+}
+
+/* ---------- Outlined button ---------- */
+
+.button {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.85rem 1.6rem;
+  border: 1px solid var(--demo-accent);
+  border-radius: var(--demo-radius);
+  color: var(--demo-accent);
+  font-family: var(--demo-display), Georgia, serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.button:hover {
+  background: var(--demo-accent);
+  color: var(--demo-on-accent);
+}
+
+/* ---------- Scannable menu code ---------- */
+
+.qr {
+  display: grid;
+  justify-items: center;
+  gap: 0.9rem;
+  margin: 2rem 0 0;
+}
+
+/* The quiet zone is padding here rather than baked into the SVG, so the code
+   keeps its margin at any size. White ground regardless of theme — scanners
+   want dark-on-light and nothing else. */
+.qrCode {
+  width: clamp(140px, 22vw, 190px);
+  padding: 14px;
+  background: #ffffff;
+  line-height: 0;
+}
+
+.qrCode svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  shape-rendering: crispEdges;
+}
+
+.qrCaption {
+  font-family: var(--demo-display), Georgia, serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--demo-accent);
+}
+
+.textLink {
+  display: inline-block;
+  margin-top: 1.6rem;
+  font-style: italic;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  color: inherit;
+}
+
+/* ---------- Photo strips and grids ---------- */
+
+.strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 720px) {
+  .strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.banner > * {
+  width: 100%;
+  height: clamp(220px, 34vw, 420px);
+}
+
+/* ---------- Split rows ---------- */
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+}
+
+.splitCopy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 4vw, 3.5rem);
+  background: var(--demo-bg);
+  color: var(--demo-text);
+}
+
+.splitCopyBand {
+  background: var(--demo-band);
+  color: var(--demo-on-band);
+}
+
+.splitCopyBand .heading {
+  color: var(--demo-on-band);
+}
+
+.splitCopyBand .body p {
+  color: var(--demo-on-band-muted);
+}
+
+.splitMedia > * {
+  width: 100%;
+  height: 100%;
+  min-height: clamp(260px, 40vw, 520px);
+}
+
+/* Photo first in source order so it leads on a phone, then reordered on
+   wide screens when the design calls for copy on the left. */
+.splitPhotoRight .splitMedia {
+  order: 2;
+}
+
+.splitPhotoRight .splitCopy {
+  order: 1;
+}
+
+@media (max-width: 720px) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+
+  .splitPhotoRight .splitMedia,
+  .splitPhotoRight .splitCopy {
+    order: initial;
+  }
+}
+
+/* ---------- Reservation ---------- */
+
+.contactRow {
+  display: grid;
+  gap: 0.7rem;
+  justify-items: center;
+  margin-top: 2rem;
+}
+
+.contactIcon {
+  color: var(--demo-text);
+  opacity: 0.8;
+}
+
+.deliveryLead {
+  margin-top: 2.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.deliveryLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+/* ---------- Address strip + map ---------- */
+
+/* Doubles as the divider between the map and the gallery — two full-bleed
+   image blocks that collide without it — so it needs enough height to read as
+   a deliberate band rather than a seam. */
+.addressStrip {
+  background: var(--demo-band);
+  color: var(--demo-on-band);
+  text-align: center;
+  padding: 1.35rem 1.5rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.addressStrip strong {
+  font-family: var(--demo-display), Georgia, serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-right: 0.4rem;
+}
+
+.map {
+  display: block;
+  width: 100%;
+  height: clamp(240px, 32vw, 380px);
+  border: 0;
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  background: var(--demo-band);
+  color: var(--demo-on-band);
+  padding: clamp(2.5rem, 6vw, 4rem) clamp(1.25rem, 6vw, 4rem) 3rem;
+  text-align: center;
+}
+
+.footerMark {
+  margin-bottom: 2.4rem;
+}
+
+.footerMark img {
+  height: 46px;
+  width: auto;
+}
+
+.footerCols {
+  display: grid;
+  gap: 2.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  align-items: start;
+}
+
+.footerTitle {
+  font-family: var(--demo-display), Georgia, serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.9rem;
+}
+
+.footerLines {
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+  color: var(--demo-on-band-muted);
+}
+
+.footerSocial {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.footerSocial a:hover {
+  color: var(--demo-accent);
+}
+
+.footerNote {
+  margin-top: 2.5rem;
+  font-size: 0.74rem;
+  color: var(--demo-on-band-muted);
+}
+
+/* ---------- Photo + placeholder ---------- */
+
+.photo {
+  position: relative;
+  background: var(--demo-surface);
+  overflow: hidden;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* A missing photograph is shown as a labelled slot rather than hidden — it
+   tells the client exactly what is still needed and keeps the block's real
+   proportions on screen. */
+.photoEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 160px;
+  color: var(--demo-muted);
+  background: repeating-linear-gradient(
+    135deg,
+    var(--demo-surface),
+    var(--demo-surface) 10px,
+    color-mix(in srgb, var(--demo-surface) 82%, var(--demo-text)) 10px,
+    color-mix(in srgb, var(--demo-surface) 82%, var(--demo-text)) 20px
+  );
+}
+
+.photoEmptyLabel {
+  font-family: var(--demo-display), Georgia, serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.photoEmptyName {
+  font-size: 0.85rem;
+  padding: 0 0.8rem;
+  text-align: center;
+  color: var(--demo-text);
+  opacity: 0.7;
+}
+
+/* ---------- QR menu ---------- */
+
+/* Deliberately not the landing page's hard-edged grid. This is read one-handed
+   at a table, so it is warm paper with photographs running off alternating
+   edges — a magazine, not a price list. */
+
+.menuPage {
+  position: relative;
+  /* Establishes a stacking context so the z-index:-1 stroke layer stays inside
+     it. Without this the layer escapes to the root context and paints beneath
+     this element's own background, where it is invisible. */
+  isolation: isolate;
+  min-height: 100vh;
+  /* Gold leaf, defined once and used by every framed element on the menu. A
+     flat border cannot look like leaf — the material reads as metal because
+     light and dark bands alternate across it. Mixed off the accent so the
+     effect re-skins with the palette. */
+  --leaf: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--demo-accent) 32%, #fff) 0%,
+    var(--demo-accent) 20%,
+    color-mix(in srgb, var(--demo-accent) 55%, #000) 38%,
+    color-mix(in srgb, var(--demo-accent) 22%, #fff) 54%,
+    var(--demo-accent) 74%,
+    color-mix(in srgb, var(--demo-accent) 58%, #000) 100%
+  );
+  background: var(--demo-surface);
+  /* Two very shallow washes give the paper some depth without a texture file
+     to download. */
+  background-image:
+    radial-gradient(
+      130% 55% at 50% 0%,
+      color-mix(in srgb, var(--demo-bg) 85%, transparent),
+      transparent 62%
+    ),
+    radial-gradient(
+      90% 45% at 100% 100%,
+      color-mix(in srgb, var(--demo-accent) 9%, transparent),
+      transparent 70%
+    );
+  background-attachment: fixed;
+  color: var(--demo-text);
+}
+
+/* Gold-leaf pen strokes over the paper. The SVG carries only shape — it is a
+   mask — and the gold comes from --leaf, so the strokes re-skin with the
+   palette instead of being a fixed yellow.
+
+   z-index: -1 puts them above the page's own background wash but under every
+   photograph and card, which is where a drawn line belongs. */
+.menuPage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--leaf);
+  -webkit-mask-image: url('./leaf-strokes.svg');
+  mask-image: url('./leaf-strokes.svg');
+  -webkit-mask-repeat: repeat-y;
+  mask-repeat: repeat-y;
+  -webkit-mask-size: 100% 1400px;
+  mask-size: 100% 1400px;
+  opacity: 0.7;
+}
+
+.menuHeader {
+  background: var(--demo-band);
+  color: var(--demo-on-band);
+  text-align: center;
+  padding: 2.6rem 1.5rem 2.4rem;
+}
+
+/* The mark at the top of the menu doubles as the way home — someone who
+   scanned the code at a table has no history to go back through. */
+.menuMasthead {
+  display: grid;
+  justify-items: center;
+  gap: 0.3rem;
+  margin-bottom: 1.5rem;
+  color: inherit;
+}
+
+.menuMasthead img {
+  height: 34px;
+  width: auto;
+}
+
+.menuMasthead:hover .brandName {
+  color: var(--demo-accent);
+}
+
+.menuIntro {
+  font-family: var(--demo-display), Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(1.3rem, 5.5vw, 1.8rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.categoryNav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.7rem 1.25rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  background: color-mix(in srgb, var(--demo-surface) 90%, transparent);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--demo-border);
+  /* `safe` matters: a plain `center` on a scroll container pushes the overflow
+     off the left edge, where it cannot be scrolled back to. With safe, the row
+     centres when the chips fit and falls back to start-aligned when they do
+     not — which is the phone case, where all four never fit at once. */
+  justify-content: safe center;
+}
+
+.categoryNav::-webkit-scrollbar {
+  display: none;
+}
+
+/* Painted with the two-layer padding-box / border-box trick: the inner layer
+   is the chip's own fill, the outer one is the leaf showing through the
+   transparent border. */
+.categoryChip {
+  flex: 0 0 auto;
+  padding: 0.45rem 0.95rem;
+  border: 1.5px solid transparent;
+  border-radius: 999px;
+  background:
+    linear-gradient(var(--demo-surface), var(--demo-surface)) padding-box,
+    var(--leaf) border-box;
+  color: var(--demo-muted);
+  font-family: var(--demo-display), Georgia, serif;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+/* The active chip is filled with the same leaf rather than a flat accent, so
+   the frame does not disappear into its own background. */
+.categoryChipActive {
+  background:
+    linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--demo-accent) 28%, #fff) 0%,
+        var(--demo-accent) 34%,
+        color-mix(in srgb, var(--demo-accent) 62%, #000) 62%,
+        var(--demo-accent) 100%
+      )
+      padding-box,
+    linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--demo-accent) 40%, #fff) 0%,
+        color-mix(in srgb, var(--demo-accent) 55%, #000) 45%,
+        color-mix(in srgb, var(--demo-accent) 30%, #fff) 100%
+      )
+      border-box;
+  color: var(--demo-on-accent);
+}
+
+/* ---------- Category opener ---------- */
+
+.category {
+  scroll-margin-top: 3.4rem;
+}
+
+.categoryOpener {
+  position: relative;
+  text-align: center;
+  padding: clamp(3rem, 9vw, 5rem) 1.5rem clamp(1.6rem, 5vw, 2.4rem);
+}
+
+/* A stroke that runs through a section title reads as a line struck through it.
+   This lays a patch of the paper colour over the stroke layer behind the whole
+   opener, feathered at the edges so it is never a visible rectangle: the line
+   fades out as it nears the heading and picks up again past it, the way a
+   printed rule stops at type.
+
+   z-index: -1 lands it in .menuPage's stacking context alongside the strokes;
+   it wins because it comes later in the tree. The opener's own text is in flow,
+   so it stays above both. Dish captions need none of this — their cards are
+   opaque already. */
+.categoryOpener::before {
+  content: '';
+  position: absolute;
+  inset: -0.75rem 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    115% 92% at 50% 50%,
+    var(--demo-surface) 0 52%,
+    transparent 80%
+  );
+}
+
+.categoryName {
+  margin: 0;
+  font-family: var(--demo-display), Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(1.35rem, 5.5vw, 2rem);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-indent: 0.16em;
+}
+
+.categoryTagline {
+  margin: 0.5rem 0 0;
+  color: var(--demo-muted);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* ---------- Dish spread ---------- */
+
+.spread {
+  position: relative;
+  margin-bottom: clamp(3.5rem, 11vw, 6rem);
+}
+
+/* Flush against the page edge on one side, generously rounded on the other:
+   the bleed is what makes it editorial, the radius is what stops it feeling
+   like a cropped rectangle. */
+.spreadMedia {
+  position: relative;
+  width: 86%;
+  margin-inline: 0 auto;
+  border-radius: 0 28px 28px 0;
+  overflow: hidden;
+  box-shadow: 0 24px 50px -30px rgba(0, 0, 0, 0.55);
+}
+
+.spreadAlt .spreadMedia {
+  margin-inline: auto 0;
+  border-radius: 28px 0 0 28px;
+}
+
+.spreadBadge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.32rem 0.7rem;
+  border-radius: 999px;
+  background: var(--demo-accent);
+  color: var(--demo-on-accent);
+  font-family: var(--demo-display), Georgia, serif;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.spreadAlt .spreadBadge {
+  left: auto;
+  right: 1rem;
+}
+
+/* Overlaps the photograph and lifts off the paper. */
+.spreadCaption {
+  position: relative;
+  z-index: 3;
+  width: min(80%, 430px);
+  margin: -2.8rem 1.1rem 0 auto;
+  padding: 1.25rem 1.35rem 1.4rem;
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(var(--demo-bg), var(--demo-bg)) padding-box,
+    var(--leaf) border-box;
+  border-radius: 22px;
+  box-shadow: 0 22px 45px -28px rgba(0, 0, 0, 0.5);
+}
+
+.spreadAlt .spreadCaption {
+  margin-inline: 1.1rem auto;
+}
+
+.spreadName {
+  font-family: var(--demo-display), Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(1.05rem, 4.2vw, 1.25rem);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.spreadDescription {
+  margin: 0.55rem 0 0;
+  color: var(--demo-muted);
+  font-size: 0.92rem;
+  line-height: 1.62;
+}
+
+.spreadPrice {
+  display: inline-block;
+  margin-top: 0.7rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+/* On a wide screen the spread becomes a true double page: photograph on one
+   half, caption riding over the gutter on the other. */
+@media (min-width: 760px) {
+  .spread {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    max-width: 1100px;
+    margin-inline: auto;
+  }
+
+  .spreadMedia {
+    grid-column: 1;
+    width: 100%;
+  }
+
+  .spreadCaption {
+    grid-column: 2;
+    width: auto;
+    max-width: 400px;
+    margin: 0 auto 0 -4rem;
+    padding: 1.6rem 1.7rem 1.8rem;
+  }
+
+  .spreadAlt .spreadMedia {
+    grid-column: 2;
+  }
+
+  .spreadAlt .spreadCaption {
+    grid-column: 1;
+    margin: 0 -4rem 0 auto;
+  }
+}
+
+/* ---------- Long tail without photographs ---------- */
+
+.dishList {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.dishRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.95rem 0;
+  border-bottom: 1px solid var(--demo-border);
+}
+
+.dishRow:last-child {
+  border-bottom: none;
+}
+
+.dishRowName {
+  font-family: var(--demo-display), Georgia, serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.dishRowDescription {
+  margin: 0.25rem 0 0;
+  color: var(--demo-muted);
+  font-size: 0.85rem;
+}
+
+.dishPrice {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* ---------- Menu footer ---------- */
+
+.menuFooter {
+  margin-top: 3rem;
+  background: var(--demo-band);
+  color: var(--demo-on-band);
+  padding: 2.2rem 1.5rem 2.6rem;
+  text-align: center;
+  display: grid;
+  gap: 0.7rem;
+  font-size: 0.85rem;
+}
+
+.menuFooterNote {
+  font-size: 0.74rem;
+  color: var(--demo-on-band-muted);
+}

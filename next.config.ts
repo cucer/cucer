@@ -10,19 +10,9 @@ const nextConfig: NextConfig = {
     /* No image optimization server exists on Pages. */
     unoptimized: true,
   },
-  /* `page.dev.tsx` counts as a route only while `next dev` is running, so the
-     internal demo index — which lists every client and my notes on them — is
-     never written into the export. It cannot be reached on the live site
-     because it is not built at all, which is a stronger guarantee than a
-     redirect on a host that runs no server code. */
-  pageExtensions:
-    process.env.NODE_ENV === 'development'
-      ? ['dev.tsx', 'tsx', 'ts', 'jsx', 'js']
-      : ['tsx', 'ts', 'jsx', 'js'],
   experimental: {
-    /* Turns on app/global-not-found.tsx. Required here because the app has two
-       root layouts — (site) and (demos) — so a plain not-found.tsx has no
-       single layout to render inside. */
+    /* Turns on app/global-not-found.tsx, which returns the 404 document on its
+       own instead of rendering inside the (site) layout. */
     globalNotFound: true,
   },
 };

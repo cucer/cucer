@@ -59,8 +59,7 @@ export const viewport: Viewport = {
   themeColor: '#070707',
 };
 
-/* Root layout for the personal site only. /demos/* lives under its own root
-   layout so a client demo never inherits this chrome, stylesheet or analytics. */
+/* Root layout for the personal site. */
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang={siteConfig.language} className={inter.variable}>

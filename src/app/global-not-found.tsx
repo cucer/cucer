@@ -8,11 +8,9 @@ import styles from './global-not-found.module.css';
 /* The 404 for the whole site — what GitHub Pages serves from out/404.html for
    any URL that was never built.
 
-   It has to be `global-not-found` rather than the usual `not-found`: the app
-   has two root layouts, (site) and (demos), so there is no single layout a
-   plain not-found could be composed inside. This file bypasses layouts and
-   returns the document itself, which also means it has to bring its own
-   stylesheet and font — nothing above it runs.
+   It is `global-not-found` rather than the usual `not-found`: this file
+   bypasses layouts and returns the document itself, which also means it has to
+   bring its own stylesheet and font — nothing above it runs.
 
    Deliberately without the header, splash and analytics: a 404 is a dead end,
    and the one thing it owes the visitor is the way back. */

@@ -53,13 +53,3 @@ dist/
 build/
 .cache/
 .parcel-cache/
-
-# Client demo work. Lives on this machine only: it is someone else's brand and
-# material, and it does not belong in my public repo. The files stay on disk,
-# so `next dev` keeps serving /demos/* locally — git simply does not see them,
-# which means the Actions runner clones a tree without them and the published
-# site has no /demos/* at all. Putting the paths back is all it takes to have
-# the demo again.
-src/demos/
-src/app/(demos)/
-public/demos/

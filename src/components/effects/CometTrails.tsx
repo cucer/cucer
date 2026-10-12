@@ -6,17 +6,14 @@ const MAX_TRAILS = 32;
 
 const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
 
-/* Comet trails are spawned at pointer rate, so they are written straight to the
-   DOM rather than through React state — re-rendering a list on every mousemove
-   would cost far more than the effect is worth. */
-export default function PointerEffects() {
+/* Little comets that trail the pointer, carried over unchanged from the
+   previous site; styled by .comet-trail in globals.css. They are spawned at
+   pointer rate, so they are written straight to the DOM rather than through
+   React state — re-rendering a list on every mousemove would cost far more
+   than the effect is worth. */
+export default function CometTrails() {
   useEffect(() => {
-    const blockContextMenu = (event: MouseEvent) => event.preventDefault();
-    window.addEventListener('contextmenu', blockContextMenu);
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      return () => window.removeEventListener('contextmenu', blockContextMenu);
-    }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const trails: HTMLSpanElement[] = [];
 
@@ -52,7 +49,6 @@ export default function PointerEffects() {
     window.addEventListener('pointermove', spawnTrail);
 
     return () => {
-      window.removeEventListener('contextmenu', blockContextMenu);
       window.removeEventListener('pointermove', spawnTrail);
       trails.forEach((trail) => trail.remove());
     };

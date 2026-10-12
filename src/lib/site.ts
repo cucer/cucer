@@ -18,6 +18,7 @@ export const siteConfig = {
   socials: {
     linkedin: 'https://www.linkedin.com/in/cagatayucer',
     github: 'https://github.com/cucer',
+    youtube: 'https://www.youtube.com/@cagatayucer',
   },
 } as const;
 

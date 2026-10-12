@@ -1,15 +1,18 @@
-import localFont from 'next/font/local';
+import { Inter, Orbitron } from 'next/font/google';
 
-/* A Latin + Turkish subset of TeX Gyre Heros (the Helvetica / Neue Haas
-   grotesque), renamed as its license asks — see src/fonts/LICENSE-CU-Grotesk.txt.
-   The headline is laid out against this font's exact metrics, so it must never
-   fall back to Inter or another Google font. `block` keeps the fallback from
-   flashing in before the entrance starts. */
-export const grotesk = localFont({
-  src: [
-    { path: '../fonts/cu-grotesk-regular.woff2', weight: '400', style: 'normal' },
-    { path: '../fonts/cu-grotesk-bold.woff2', weight: '700', style: 'normal' },
-  ],
-  display: 'block',
-  variable: '--font-grotesk',
+/* Body copy. */
+export const inter = Inter({
+  subsets: ['latin', 'latin-ext'],
+  weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-inter',
+});
+
+/* Headings. Self-hosted through next/font rather than loaded from a
+   third-party font mirror; 500 is Orbitron's Medium cut. */
+export const orbitron = Orbitron({
+  subsets: ['latin'],
+  weight: '500',
+  display: 'swap',
+  variable: '--font-orbitron',
 });

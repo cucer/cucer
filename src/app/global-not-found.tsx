@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import './globals.css';
-import { grotesk } from '@/lib/fonts';
+import { inter, orbitron } from '@/lib/fonts';
 import { siteConfig } from '@/lib/site';
 import styles from './global-not-found.module.css';
 
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 export default function GlobalNotFound() {
   return (
-    <html lang={siteConfig.language} className={grotesk.variable}>
+    <html lang={siteConfig.language} className={`${inter.variable} ${orbitron.variable}`}>
       <body>
         <main className={styles.wrap}>
           <p className={styles.code}>404</p>

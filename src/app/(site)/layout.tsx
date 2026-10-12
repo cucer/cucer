@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import '../globals.css';
-import { grotesk } from '@/lib/fonts';
+import { inter, orbitron } from '@/lib/fonts';
 import { siteConfig } from '@/lib/site';
-import { stageBootstrap } from '@/components/stage/Stage';
+import CometTrails from '@/components/effects/CometTrails';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -49,17 +49,13 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
-  themeColor: '#0d0905',
+  themeColor: '#c45a18',
 };
 
 /* Root layout for the personal site. */
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
-    /* stageBootstrap adds entrance classes to <html> before React hydrates. */
-    <html lang={siteConfig.language} className={grotesk.variable} suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: stageBootstrap }} />
-      </head>
+    <html lang={siteConfig.language} className={`${inter.variable} ${orbitron.variable}`}>
       <body>
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.gaMeasurementId}`}
@@ -73,6 +69,7 @@ gtag('config', '${siteConfig.gaMeasurementId}');`}
         </Script>
 
         <main>{children}</main>
+        <CometTrails />
       </body>
     </html>
   );

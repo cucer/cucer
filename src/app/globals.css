@@ -11,13 +11,13 @@ html,
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  background: #130e09;
+  background: #c45a18;
+  color: #fbdbaf;
+  overflow-x: hidden;
 }
 
 body {
-  font-family: var(--font-grotesk), 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #ffffff;
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: geometricPrecision;
@@ -42,6 +42,31 @@ button {
 }
 
 :focus-visible {
-  outline: 1px solid #ffffff;
+  outline: 1px solid currentColor;
   outline-offset: 3px;
+}
+
+/* Pointer comets spawned by CometTrails, carried over unchanged from the
+   previous site. Global because the spans are appended straight to <body>. */
+.comet-trail {
+  position: fixed;
+  width: 16px;
+  height: 2px;
+  border-radius: 999px;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(138, 243, 251, 0), rgba(206, 91, 255, 0.9));
+  filter: drop-shadow(0 0 6px rgba(206, 91, 255, 0.75));
+  animation: cometDrift 0.55s ease-out forwards;
+  z-index: 1200;
+}
+
+@keyframes cometDrift {
+  from {
+    opacity: 1;
+    transform: rotate(var(--comet-angle, 0deg)) translate3d(0, 0, 0) scaleX(0.5);
+  }
+  to {
+    opacity: 0;
+    transform: rotate(var(--comet-angle, 0deg)) translate3d(22px, 0, 0) scaleX(1.2);
+  }
 }

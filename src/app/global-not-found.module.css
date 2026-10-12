@@ -1,5 +1,5 @@
 /* Styles for the 404 only. It renders outside every layout, so it repeats the
-   home page's backdrop and type rather than inheriting them. */
+   site's orange backdrop and type rather than inheriting them. */
 
 .wrap {
   min-height: 100vh;
@@ -7,53 +7,56 @@
   display: grid;
   place-content: center;
   justify-items: center;
-  gap: 18px;
+  gap: 16px;
   padding: 32px 16px;
   text-align: center;
-  background: linear-gradient(180deg, #0d0905 0%, #0f0c07 75%, #130e09 100%);
+  color: #fbdbaf;
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  background: radial-gradient(circle at 50% 40%, #e07020 0%, #c45a18 45%, #8a3a0c 100%);
 }
 
-/* Bold and tight like the home headline, but a touch looser: at this size the
-   headline's tracking makes the round 0 touch the 4s. The number is the
-   ornament, the line under it is the message. */
+/* The number is the ornament, in the headline face; the line under it is the
+   message. */
 .code {
   margin: 0;
-  font-size: clamp(96px, 26vw, 220px);
-  font-weight: 700;
-  line-height: 0.8;
-  letter-spacing: -0.035em;
+  font-family: var(--font-orbitron), 'Arial Narrow', sans-serif;
+  font-weight: 500;
+  font-size: clamp(88px, 24vw, 200px);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.22);
 }
 
 .title {
   margin: 0;
-  font-size: 17px;
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  font-family: var(--font-orbitron), 'Arial Narrow', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .text {
   margin: 0;
   max-width: 34ch;
-  font-size: 13px;
-  line-height: 1.35;
-  letter-spacing: -0.02em;
-  color: rgba(255, 255, 255, 0.62);
+  font-size: 13.5px;
+  font-weight: 700;
+  line-height: 1.55;
+  color: rgba(251, 219, 175, 0.88);
 }
 
-/* The same white block as the home page's Let's-talk button. */
+/* Same pill as the cards' label, but a real link home. */
 .link {
   margin-top: 8px;
-  padding: 0 0.6em 0 0.33em;
-  height: 1.508em;
-  line-height: 1.508em;
-  font-size: 13px;
-  letter-spacing: -0.055em;
-  background: #fcfcfc;
-  color: #141414;
+  border: 1px solid #fbdbaf;
+  border-radius: 999px;
+  padding: 7px 16px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #fbdbaf;
+  transition: background 0.25s ease;
 }
 
-@media (hover: hover) {
-  .link:hover {
-    background: #fff;
-  }
+.link:hover {
+  background: rgba(251, 219, 175, 0.12);
 }

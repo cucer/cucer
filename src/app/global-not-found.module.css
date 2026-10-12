@@ -1,58 +1,59 @@
-/* Styles for the 404 only. It renders outside every layout, so it cannot lean
-   on .site-wrapper or anything else the header and footer set up. */
+/* Styles for the 404 only. It renders outside every layout, so it repeats the
+   home page's backdrop and type rather than inheriting them. */
 
 .wrap {
   min-height: 100vh;
+  min-height: 100dvh;
   display: grid;
   place-content: center;
   justify-items: center;
-  gap: 1.1rem;
-  padding: 2rem 1.5rem;
+  gap: 18px;
+  padding: 32px 16px;
   text-align: center;
+  background: linear-gradient(180deg, #0d0905 0%, #0f0c07 75%, #130e09 100%);
 }
 
-/* Large, thin and low-contrast: the number is the ornament here, not the
-   message. The message is the line under it. */
+/* Bold and tight like the home headline, but a touch looser: at this size the
+   headline's tracking makes the round 0 touch the 4s. The number is the
+   ornament, the line under it is the message. */
 .code {
   margin: 0;
-  font-size: clamp(5rem, 22vw, 11rem);
-  font-weight: 200;
-  line-height: 1;
-  letter-spacing: 0.06em;
-  color: transparent;
-  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-strong) 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
+  font-size: clamp(96px, 26vw, 220px);
+  font-weight: 700;
+  line-height: 0.8;
+  letter-spacing: -0.035em;
 }
 
 .title {
   margin: 0;
-  font-size: clamp(1.1rem, 4vw, 1.4rem);
-  font-weight: 400;
-  letter-spacing: 0.02em;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }
 
 .text {
   margin: 0;
   max-width: 34ch;
-  color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 13px;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.62);
 }
 
+/* The same white block as the home page's Let's-talk button. */
 .link {
-  margin-top: 0.6rem;
-  padding: 0.7rem 1.5rem;
-  border: 1px solid var(--accent);
-  border-radius: 999px;
-  color: var(--accent);
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  margin-top: 8px;
+  padding: 0 0.6em 0 0.33em;
+  height: 1.508em;
+  line-height: 1.508em;
+  font-size: 13px;
+  letter-spacing: -0.055em;
+  background: #fcfcfc;
+  color: #141414;
 }
 
-.link:hover {
-  background: var(--accent);
-  color: #070707;
+@media (hover: hover) {
+  .link:hover {
+    background: #fff;
+  }
 }

@@ -1,0 +1,458 @@
+/* Design frame is 1280 × 800. One design pixel is --u, the largest uniform
+   scale that fits the whole frame in the viewport: heights map 1:1 to the
+   screen, and extra width is absorbed by edge-anchored elements and the
+   extended backdrop.
+
+   Every token lives on .hero rather than :root, because a CSS module cannot
+   own a global selector — and tokens that derive from each other (--small from
+   --small-min) only re-resolve when they are redefined on the same element. */
+
+.hero {
+  --vh: 1vh;
+  --ink: #ffffff;
+  --base-bot: #130e09;
+  --rule: rgba(255, 255, 255, 0.115);
+  --small-min: 10px;
+  --u: min(100vw / 1280, var(--vh) * 100 / 800);
+  --small: max(var(--small-min), 12.6 * var(--u));
+  --e-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --e-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --e-sweep: cubic-bezier(0.76, 0, 0.24, 1);
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 320px;
+  background: linear-gradient(
+    180deg,
+    #0d0905 0%,
+    #0f0a05 15%,
+    #0d0a05 30%,
+    #0d0905 45%,
+    #0e0a06 60%,
+    #0f0c07 75%,
+    #130e08 90%,
+    #130e09 100%
+  );
+}
+
+@supports (height: 1dvh) {
+  .hero {
+    --vh: 1dvh;
+  }
+}
+
+@media (min-height: 480px) {
+  .hero {
+    --small-min: 11.28px;
+  }
+}
+
+/* ---------- Background video ---------- */
+
+/* Keeps the helmet at 52.93% across however wide the plate gets, and fades the
+   plate's own edges into the backdrop when the viewport is wider than it. */
+.photo {
+  --pw: max(min(100vw, 1536 * var(--u)), var(--vh) * 160);
+  --fade: clamp(0px, 100vw - var(--pw), var(--pw) * 0.08);
+  position: absolute;
+  z-index: -3;
+  top: var(--photo-top, 0px);
+  left: calc((100vw - var(--pw)) * 0.5293);
+  width: var(--pw);
+  aspect-ratio: 16 / 10;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 var(--fade),
+    #000 calc(100% - var(--fade)),
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 var(--fade),
+    #000 calc(100% - var(--fade)),
+    transparent
+  );
+}
+
+.photo video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* ---------- Top bar ---------- */
+
+/* The wordmark is set 1.45× the small size; pulling it up by 0.04em puts its
+   cap height where the small type's would sit. */
+.logo {
+  position: absolute;
+  left: calc(20.65 * var(--u));
+  top: calc(12.8 * var(--u) - 0.04em);
+  font-size: calc(var(--small) * 1.45);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  white-space: nowrap;
+  color: var(--ink);
+}
+
+.small {
+  font-size: var(--small);
+  line-height: 1;
+  font-weight: 400;
+  margin: 0;
+  -webkit-text-stroke: 0.022em currentColor;
+}
+
+.small,
+.small span {
+  letter-spacing: var(--ls, -0.051em);
+}
+
+/* ---------- Services and rule ---------- */
+
+.services {
+  list-style: none;
+  padding: 0;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: calc(211.75 * var(--u));
+  font-size: max(var(--small-min) * 1.06, 13.3 * var(--u));
+  line-height: 1;
+}
+
+.services li {
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+  -webkit-text-stroke-width: 0.008em;
+}
+
+.services li:nth-child(1) {
+  left: calc(20 * var(--u));
+  --ls: -0.047em;
+}
+
+.services li:nth-child(2) {
+  left: calc(50% - 3 * var(--u));
+  transform: translateX(-50%);
+  --ls: -0.0485em;
+}
+
+.services li:nth-child(3) {
+  right: calc(33.25 * var(--u));
+  --ls: -0.064em;
+}
+
+.rv {
+  display: inline-block;
+}
+
+.rule {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: calc(239 * var(--u));
+  height: 1px;
+  background: var(--rule);
+  z-index: -1;
+  box-shadow:
+    0 -1px 0 rgba(255, 255, 255, 0.038),
+    0 1px 0 rgba(255, 255, 255, 0.014);
+}
+
+/* ---------- Headline ---------- */
+
+/* A zero-size anchor centred at the bottom. Each line hangs off it by --b, and
+   each track's baseline lands exactly on its line: 0.909em is where this
+   font's baseline falls inside a line-height: 1 box. The size is 170.94 design
+   pixels, or less if --hl-w (the widest line, in em, measured in Stage.tsx)
+   would otherwise run past the edges. */
+.hl {
+  position: absolute;
+  left: 50%;
+  bottom: 0.4914em;
+  margin: 0;
+  width: 0;
+  height: 0;
+  font-size: min(170.94 * var(--u), (100vw - 41.3 * var(--u)) / var(--hl-w, 6.3063));
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.hlLine,
+.hlClip {
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 0;
+}
+
+.hlLine {
+  bottom: var(--b);
+}
+
+.hlClip {
+  top: 0;
+}
+
+/* Letter-spacing also trails the last letter; shifting by half of it centres
+   the glyphs rather than the box. */
+.hlTrack {
+  position: absolute;
+  top: -0.909em;
+  left: -0.0325em;
+  transform: translateX(-50%);
+  letter-spacing: -0.065em;
+}
+
+/* ---------- Entrance, once on load ---------- */
+
+/* Only while html.is-entering is present, and paused until is-playing joins it.
+   The video never animates. */
+:global(html.is-entering) .hero {
+  --au-state: paused;
+}
+
+:global(html.is-entering.is-playing) .hero {
+  --au-state: running;
+}
+
+@keyframes au-rise {
+  from {
+    translate: 0 var(--rise);
+  }
+  to {
+    translate: 0 0;
+  }
+}
+
+@keyframes au-soft {
+  from {
+    translate: 0 var(--rise);
+    opacity: 0;
+  }
+  to {
+    translate: 0 0;
+    opacity: 1;
+  }
+}
+
+@keyframes au-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+:global(html.is-entering) .rule {
+  transform-origin: 0 50%;
+  animation: au-draw 0.85s var(--e-sweep) 0.24s both;
+  animation-play-state: var(--au-state);
+  will-change: transform;
+}
+
+:global(html.is-entering) .hlClip {
+  clip-path: inset(-0.8em -3.6em -0.05em -3.6em);
+}
+
+:global(html.is-entering) .hlTrack {
+  --rise: 1em;
+  animation: au-rise 1.05s var(--e-expo) 0.1s both;
+  animation-play-state: var(--au-state);
+  will-change: translate, transform;
+}
+
+:global(html.is-entering) .hlLine:nth-child(2) .hlTrack {
+  animation-delay: 0.18s;
+}
+
+:global(html.is-entering) .hlLine:nth-child(3) .hlTrack {
+  animation-delay: 0.26s;
+}
+
+:global(html.is-entering) .services li {
+  clip-path: inset(-0.25em -0.4em -0.35em -0.4em);
+}
+
+:global(html.is-entering) .rv {
+  --rise: calc(100% + 0.6em);
+  animation: au-rise 0.8s var(--e-quint) 0.56s both;
+  animation-play-state: var(--au-state);
+  will-change: translate, transform;
+}
+
+:global(html.is-entering) .services li:nth-child(2) .rv {
+  animation-delay: 0.62s;
+}
+
+:global(html.is-entering) .services li:nth-child(3) .rv {
+  animation-delay: 0.68s;
+}
+
+:global(html.is-entering) .logo {
+  --rise: 0.55em;
+  animation: au-soft 0.75s var(--e-quint) 0.7s both;
+  animation-play-state: var(--au-state);
+}
+
+/* ---------- Coarse pointers ---------- */
+
+/* Bigger hit areas without changing what is drawn. */
+@media (pointer: coarse) {
+  .logo::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    translate: 0 -50%;
+    left: -10px;
+    right: -10px;
+    height: max(100%, 44px);
+  }
+}
+
+/* ---------- Portrait-leaning tablets and phones ---------- */
+
+/* Breaks on composition, not on a device width. */
+@media (max-aspect-ratio: 114/100) {
+  .hero {
+    --small-min: 12px;
+    --m: clamp(16px, 3.2vw, 32px);
+    --bar-top: calc(var(--m) * 0.64);
+    --photo-top: calc(var(--vh) * 15);
+  }
+
+  .logo {
+    left: var(--m);
+    top: calc(var(--bar-top) - 0.04em);
+  }
+
+  .photo {
+    --pw: calc(var(--vh) * 138.6);
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 11%);
+    mask-image: linear-gradient(180deg, transparent 0, #000 11%);
+  }
+
+  .services {
+    top: calc(var(--vh) * 44);
+  }
+
+  .services li:nth-child(1) {
+    left: var(--m);
+  }
+
+  .services li:nth-child(2) {
+    left: 50%;
+  }
+
+  .services li:nth-child(3) {
+    right: var(--m);
+  }
+
+  .rule {
+    top: calc(var(--vh) * 44 + 2.1em);
+    font-size: var(--small);
+  }
+
+  /* Fills the width between the margins, but never so tall that the top line
+     climbs into the services row on a near-square screen. */
+  .hl {
+    font-size: min((100vw - 2 * var(--m)) / var(--hl-w, 6.3063), 17 * var(--vh));
+    bottom: max(0.4914em, calc(18px + env(safe-area-inset-bottom)));
+  }
+}
+
+@media (max-aspect-ratio: 114/100) and (max-width: 679px) {
+  .hero {
+    --small-min: 11.5px;
+    --bar-top: calc(var(--m) * 0.64 + env(safe-area-inset-top));
+  }
+}
+
+@media (max-aspect-ratio: 114/100) and (max-width: 309px) {
+  .hero {
+    --F: min((100vw - 2 * var(--m)) / var(--hl-w, 6.3063), 17 * var(--vh));
+    --ptop: max(
+      var(--vh) * 15,
+      min(
+        150px + env(safe-area-inset-top),
+        var(--vh) * 71 - max(0.4914 * var(--F), 18px + env(safe-area-inset-bottom)) -
+          2.3 * var(--F) - 56px
+      )
+    );
+    --photo-top: var(--ptop);
+  }
+
+  .services {
+    top: calc(var(--ptop) + var(--vh) * 29);
+  }
+
+  .services li {
+    white-space: normal;
+    width: min-content;
+  }
+
+  .services li:nth-child(2) {
+    text-align: center;
+  }
+
+  .services li:nth-child(3) {
+    text-align: right;
+  }
+
+  .rule {
+    top: calc(var(--ptop) + var(--vh) * 29 + 3.1em);
+  }
+}
+
+/* ---------- Landscape phones ---------- */
+
+/* Keeps the desktop composition inside the safe area. */
+@media (max-height: 479px) and (min-aspect-ratio: 1141/1000) {
+  .hero {
+    --small-min: 11.5px;
+    --mL: max(16px, env(safe-area-inset-left));
+    --mR: max(16px, env(safe-area-inset-right));
+    --bar-top: calc(16px * 0.64);
+    --mid: calc(var(--mL) + (100vw - var(--mL) - var(--mR)) / 2);
+  }
+
+  .logo {
+    left: var(--mL);
+    top: calc(var(--bar-top) - 0.04em);
+  }
+
+  .services li:nth-child(1) {
+    left: var(--mL);
+  }
+
+  .services li:nth-child(2) {
+    left: var(--mid);
+  }
+
+  .services li:nth-child(3) {
+    right: var(--mR);
+  }
+
+  .hl {
+    left: var(--mid);
+    font-size: min(
+      170.94 * var(--u),
+      (100vw - var(--mL) - var(--mR)) / var(--hl-w, 6.3063)
+    );
+    bottom: max(0.4914em, calc(8px + env(safe-area-inset-bottom)));
+  }
+}

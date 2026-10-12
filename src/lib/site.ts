@@ -7,6 +7,7 @@ export const siteConfig = {
   url: 'https://cagatayucer.com',
   locale: 'en_US',
   language: 'en',
+  email: 'ucer.devops@gmail.com',
   gaMeasurementId: 'G-2VLW7KEBEF',
   defaultTitle: 'Cagatay Ucer | Web & App Developer | React, Next.js, AI',
   defaultDescription:

@@ -1,19 +1,9 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
 import Script from 'next/script';
 import '../globals.css';
+import { grotesk } from '@/lib/fonts';
 import { siteConfig } from '@/lib/site';
-import SplashScreen from '@/components/SplashScreen';
-import SiteHeader from '@/components/SiteHeader';
-import SiteFooter from '@/components/SiteFooter';
-import PointerEffects from '@/components/PointerEffects';
-
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['200', '300', '400', '500', '600'],
-  display: 'swap',
-  variable: '--font-inter',
-});
+import { stageBootstrap } from '@/components/stage/Stage';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -56,13 +46,20 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#070707',
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+  themeColor: '#0d0905',
 };
 
 /* Root layout for the personal site. */
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang={siteConfig.language} className={inter.variable}>
+    /* stageBootstrap adds entrance classes to <html> before React hydrates. */
+    <html lang={siteConfig.language} className={grotesk.variable} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: stageBootstrap }} />
+      </head>
       <body>
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.gaMeasurementId}`}
@@ -75,15 +72,7 @@ gtag('js', new Date());
 gtag('config', '${siteConfig.gaMeasurementId}');`}
         </Script>
 
-        <SplashScreen />
-
-        <div className="site-wrapper">
-          <SiteHeader />
-          <main>{children}</main>
-          <SiteFooter />
-        </div>
-
-        <PointerEffects />
+        <main>{children}</main>
       </body>
     </html>
   );

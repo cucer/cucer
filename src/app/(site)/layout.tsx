@@ -4,6 +4,7 @@ import '../globals.css';
 import { inter, orbitron } from '@/lib/fonts';
 import { siteConfig } from '@/lib/site';
 import CometTrails from '@/components/effects/CometTrails';
+import MouseOrb from '@/components/effects/MouseOrb';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -69,6 +70,7 @@ gtag('config', '${siteConfig.gaMeasurementId}');`}
         </Script>
 
         <main>{children}</main>
+        <MouseOrb />
         <CometTrails />
       </body>
     </html>

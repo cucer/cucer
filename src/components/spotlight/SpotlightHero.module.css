@@ -455,6 +455,14 @@
     min-height: 100dvh;
   }
 
+  /* A phone shows only a narrow slice of the scene; nudging it 48px (about
+     2cm on a phone) brings more of the figure's back into frame. Both layers
+     move together so the spotlight still lines up. */
+  .baseImg,
+  .revealImg {
+    background-position: calc(40% - 48px) center;
+  }
+
 
   .ui {
     position: relative;

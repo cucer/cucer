@@ -46,6 +46,32 @@ button {
   outline-offset: 3px;
 }
 
+/* The glow behind the pointer, moved by MouseOrb; carried over from the
+   previous site, but fixed rather than absolute so it stays with the pointer
+   on pages that scroll. Full strength, because the old 0.35 × 0.6 glow all
+   but vanished on the orange scene; it sits under the copy (z-index 5, below
+   the hero's text layer at 8) so it never tints the text. */
+.mouse-orb {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(138, 243, 251, 1), transparent 65%);
+  filter: blur(25px);
+  pointer-events: none;
+  mix-blend-mode: screen;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mouse-orb {
+    display: none;
+  }
+}
+
 /* Pointer comets spawned by CometTrails, carried over unchanged from the
    previous site. Global because the spans are appended straight to <body>. */
 .comet-trail {

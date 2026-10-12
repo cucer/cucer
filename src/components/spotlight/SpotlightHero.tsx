@@ -1,5 +1,4 @@
 import { Fragment, type CSSProperties, type ReactNode } from 'react';
-import Link from 'next/link';
 import StarField from '@/components/effects/StarField';
 import SpotlightEffects from './SpotlightEffects';
 import styles from './SpotlightHero.module.css';
@@ -83,9 +82,11 @@ function PullWords({
     });
     if (!lineClass) return words;
     return firstLineHref && lineIndex === 0 ? (
-      <Link key={line} href={firstLineHref} className={lineClass}>
+      /* A plain link, not next/link: every page is a full load, so Google
+         Analytics records each page view without relying on history events. */
+      <a key={line} href={firstLineHref} className={lineClass}>
         {words}
-      </Link>
+      </a>
     ) : (
       <span key={line} className={lineClass}>
         {words}

@@ -5,9 +5,9 @@ import { siteConfig } from '@/lib/site';
 /* Shared by URL only: not linked from the home page, left out of the sitemap
    and kept out of search results. Its own title, description and preview
    image are what people see when the link is pasted into a chat. */
-const title = 'DJ, Events & Venue Music';
+const title = 'Resident DJ, Events & Production';
 const description =
-  'DJ sets, event planning and weekly music for venues with no DJ and no booth: two or three nights a week, equipment included.';
+  'A resident DJ for places with no DJ and no booth, two or three nights a week with the equipment included. Also DJ sets, event planning and electronic music production.';
 const ogImage = '/assets/og-dj.jpg';
 
 export const metadata: Metadata = {
@@ -40,18 +40,18 @@ const dj: SpotlightContent = {
   ],
   links: [{ label: 'YouTube', href: siteConfig.socials.youtube, icon: 'youtube' }],
   card: {
-    title: 'Venue Residency',
+    title: 'Resident DJ',
     body: 'A resident DJ with the full setup, 2 to 3 nights a week. You open the doors, I bring the sound.',
     image: '/assets/tt.webp',
     tag: 'Let’s connect',
   },
-  slogan: 'NO DJ, NO DECKS? COVERED',
+  slogan: 'READY TO PLAY, GEAR INCLUDED',
   specs: {
     title: 'Services',
     rows: [
       { label: 'DJ', value: 'Club, bar & private sets' },
       { label: 'Events', value: 'Planned to the last track' },
-      { label: 'Venues', value: 'Weekly residency, 2 to 3 nights' },
+      { label: 'Resident DJ', value: 'Weekly, 2 to 3 nights' },
       { label: 'Gear', value: 'Decks, mixer & sound included' },
     ],
   },

@@ -19,6 +19,7 @@ export const siteConfig = {
     linkedin: 'https://www.linkedin.com/in/cagatayucer',
     github: 'https://github.com/cucer',
     youtube: 'https://www.youtube.com/@cagatayucer',
+    soundcloud: 'https://soundcloud.com/cagatayucer',
   },
 } as const;
 

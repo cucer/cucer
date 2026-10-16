@@ -9,7 +9,7 @@ export type SpotlightContent = {
   /* Each entry starts on a new line. */
   intro: readonly string[];
   /* Round icon links under the intro; optional. */
-  links?: readonly { label: string; href: string; icon: 'youtube' }[];
+  links?: readonly { label: string; href: string; icon: 'youtube' | 'soundcloud' }[];
   card: {
     title: string;
     body: string;
@@ -128,6 +128,13 @@ const ICONS: Record<NonNullable<SpotlightContent['links']>[number]['icon'], Reac
       <path d="m9.75 15.02 5.75-3.27-5.75-3.27v6.54z" />
     </>
   ),
+  /* Drawn in the same outline style: the cloud with the bars of its logo. */
+  soundcloud: (
+    <>
+      <path d="M1 13.5V18M3.75 11v7M6.5 9v9M9.25 7.5V18" />
+      <path d="M12 18V6.6a5.6 5.6 0 0 1 8 3.4A4 4 0 0 1 19 18h-7z" />
+    </>
+  ),
 };
 
 /* Full-viewport hero: a second scene shows through a spotlight that follows
@@ -179,11 +186,11 @@ export default function SpotlightHero({ content }: { content: SpotlightContent }
                   >
                     <svg
                       viewBox="0 0 24 24"
-                      width="16"
-                      height="16"
+                      width="26"
+                      height="26"
                       fill="none"
                       stroke="currentColor"
-                      strokeWidth="1.6"
+                      strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       aria-hidden="true"

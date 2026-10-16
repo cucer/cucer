@@ -39,7 +39,10 @@ const dj: SpotlightContent = {
     'Original electronic music, where the machine meets the soul.',
     'You can listen to my tracks on YouTube.',
   ],
-  links: [{ label: 'YouTube', href: siteConfig.socials.youtube, icon: 'youtube' }],
+  links: [
+    { label: 'YouTube', href: siteConfig.socials.youtube, icon: 'youtube' },
+    { label: 'SoundCloud', href: siteConfig.socials.soundcloud, icon: 'soundcloud' },
+  ],
   card: {
     title: 'Resident DJ',
     body: 'A resident DJ with the full setup, on a schedule we plan together. You open the doors, I bring the sound.',

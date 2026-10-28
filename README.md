@@ -1,13 +1,12 @@
-# cagatayucer.com
+# Cagatay Ucer
 
-Personal site of Cagatay Ucer, built with Next.js and exported as static files
-to GitHub Pages (see `.github/workflows/deploy.yml`).
+Software developer focused on building clean, reliable and maintainable
+products. I enjoy turning ideas into working software, from the first sketch
+to production, and keeping things simple along the way.
 
-- `/`: software development
-- `/dj/`: DJ, events and music production; shared by link only, not indexed
+## What I care about
 
-```sh
-npm install
-npm run dev     # local development
-npm run build   # static export to out/
-```
+- Clear, readable code that is easy to change
+- Thoughtful user experience and attention to detail
+- Solving real problems over chasing trends
+- Shipping steadily and improving through feedback

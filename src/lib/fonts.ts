@@ -1,8 +1,10 @@
 import { Inter, Orbitron } from 'next/font/google';
 
-/* Body copy. */
+/* Body copy. `subsets` only picks what is preloaded: every subset is still
+   declared, so a latin-ext character would load its file on demand. The
+   copy is plain Latin, so preloading latin-ext only wasted a request. */
 export const inter = Inter({
-  subsets: ['latin', 'latin-ext'],
+  subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
   display: 'swap',
   variable: '--font-inter',

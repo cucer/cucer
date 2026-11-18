@@ -34,7 +34,7 @@ export const metadata: Metadata = {
         url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: 'Cagatay Ucer | Web & App Developer',
+        alt: 'Cagatay Ucer, Professional Tinkerer',
       },
     ],
   },

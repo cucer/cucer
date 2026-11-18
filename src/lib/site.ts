@@ -3,21 +3,18 @@
 
 export const siteConfig = {
   name: 'Cagatay Ucer',
-  jobTitle: 'Web & App Developer',
+  jobTitle: 'Professional Tinkerer',
   url: 'https://cagatayucer.com',
   locale: 'en_US',
   language: 'en',
-  email: 'ucer.devops@gmail.com',
   gaMeasurementId: 'G-2VLW7KEBEF',
   defaultTitle: 'Cagatay Ucer · Personal Site',
   defaultDescription:
     'Good vibes, curious mind. Building with tech and AI along the way.',
   socialDescription:
-    'Web and mobile products built with React, React Native and Next.js, plus AI and LLM integrations, from roadmap through to launch.',
+    'Good vibes, curious mind. Building with tech and AI along the way.',
   ogImage: '/assets/og-image.jpg',
   socials: {
-    linkedin: 'https://www.linkedin.com/in/cagatayucer',
-    github: 'https://github.com/cucer',
     youtube: 'https://www.youtube.com/@cagatayucer',
     soundcloud: 'https://soundcloud.com/cagatayucer',
   },
@@ -30,22 +27,8 @@ export const personSchema = {
   url: `${siteConfig.url}/`,
   image: `${siteConfig.url}/assets/logo.webp`,
   jobTitle: siteConfig.jobTitle,
-  description:
-    'Web and mobile developer building products with React, React Native, Next.js and Node.js, alongside agile project management.',
-  knowsAbout: [
-    'Web Development',
-    'App Development',
-    'React',
-    'React Native',
-    'Next.js',
-    'Node.js',
-    'AI Integration',
-    'Large Language Models',
-    'Retrieval Augmented Generation',
-    'Project Management',
-    'Digital Marketing',
-  ],
-  sameAs: [siteConfig.socials.linkedin, siteConfig.socials.github],
+  description: siteConfig.defaultDescription,
+  knowsAbout: ['Technology', 'Artificial Intelligence', 'Travel'],
 };
 
 export const websiteSchema = {

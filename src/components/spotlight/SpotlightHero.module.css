@@ -31,6 +31,7 @@
 /* ---------- Scene ---------- */
 
 .baseImg,
+.backdropImg,
 .revealImg {
   position: absolute;
   inset: 0;
@@ -41,6 +42,32 @@
 
 .baseImg {
   z-index: 1;
+}
+
+/* The storm sky and its lightning share the base's layer, painted after it.
+   The mask keeps both off the figure in the middle, so they sit behind it. */
+.backdropImg,
+.lightning {
+  z-index: 1;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 22%, transparent 34%, transparent 78%, #000 90%);
+  mask-image: linear-gradient(90deg, #000 0%, #000 22%, transparent 34%, transparent 78%, #000 90%);
+}
+
+/* Barely there: blended into the base so it reads as texture in its colors,
+   not as a second picture. */
+.backdropImg {
+  opacity: 0.3;
+  mix-blend-mode: overlay;
+}
+
+/* Only ever adds light to the sky. */
+.lightning {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: screen;
 }
 
 /* Hidden until the pointer moves; SpotlightEffects then cuts a circle into it. */
@@ -108,7 +135,7 @@
 
 .copy > p {
   margin-top: 18px;
-  max-width: 340px;
+  max-width: 460px;
   font-size: 13.5px;
   font-weight: 700;
   line-height: 1.55;
@@ -464,6 +491,12 @@
   .baseImg,
   .revealImg {
     background-position: calc(40% - 48px) center;
+  }
+
+  /* The figure fills a phone's width, so there is no open sky left. */
+  .backdropImg,
+  .lightning {
+    display: none;
   }
 
 

@@ -1,4 +1,6 @@
 import { Fragment, type CSSProperties, type ReactNode } from 'react';
+import DustStorm from '@/components/effects/DustStorm';
+import Lightning from '@/components/effects/Lightning';
 import StarField from '@/components/effects/StarField';
 import SpotlightEffects from './SpotlightEffects';
 import styles from './SpotlightHero.module.css';
@@ -20,7 +22,10 @@ export type SpotlightContent = {
   /* Short line in the top-right corner; on a phone it follows the intro. */
   slogan: string;
   specs: { title: string; rows: readonly { label: string; value: string }[] };
-  images: { base: string; reveal: string };
+  /* backdrop: optional, a faint texture blended into the base scene. */
+  images: { base: string; reveal: string; backdrop?: string };
+  /* What drifts over the scene; falling stars unless set. */
+  atmosphere?: 'stars' | 'dust';
 };
 
 const WORD_STAGGER_S = 0.1;
@@ -152,12 +157,27 @@ export default function SpotlightHero({ content }: { content: SpotlightContent }
         className={`${styles.baseImg} ${styles.imageAnimate}`}
         style={{ backgroundImage: `url("${content.images.base}")` }}
       />
+      {/* The backdrop is a stormy sky, so lightning strikes in it. */}
+      {content.images.backdrop && (
+        <>
+          <div
+            className={styles.backdropImg}
+            aria-hidden="true"
+            style={{ backgroundImage: `url("${content.images.backdrop}")` }}
+          />
+          <Lightning className={styles.lightning} />
+        </>
+      )}
       <div
         className={styles.revealImg}
         data-reveal=""
         style={{ backgroundImage: `url("${content.images.reveal}")` }}
       />
-      <StarField className={styles.stars} />
+      {content.atmosphere === 'dust' ? (
+        <DustStorm className={styles.stars} />
+      ) : (
+        <StarField className={styles.stars} />
+      )}
 
       <div className={styles.ui}>
         <div className={styles.left}>

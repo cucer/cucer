@@ -9,7 +9,7 @@ const homeSchema = {
       '@type': 'ProfilePage',
       '@id': `${siteConfig.url}/#webpage`,
       url: `${siteConfig.url}/`,
-      name: 'Cagatay Ucer, Web & App Developer',
+      name: 'Cagatay Ucer, Professional Tinkerer',
       isPartOf: { '@id': websiteSchema['@id'] },
       mainEntity: { '@id': personSchema['@id'] },
       primaryImageOfPage: `${siteConfig.url}${siteConfig.ogImage}`,
@@ -24,7 +24,8 @@ const homeSchema = {
 const home: SpotlightContent = {
   headline: ['CAGATAY UCER'],
   intro: [
-    'Good vibes, curious mind. Building with tech and AI along the way.',
+    'Good vibes, curious mind.',
+    'Building with tech and AI along the way.',
   ],
   card: {
     title: 'Lately',
@@ -42,7 +43,8 @@ const home: SpotlightContent = {
       { label: 'Coffee', value: 'Non-negotiable' },
     ],
   },
-  images: { base: '/assets/dev.webp', reveal: '/assets/devneon.webp' },
+  images: { base: '/assets/dev.webp', reveal: '/assets/devneon.webp', backdrop: '/assets/mars.webp' },
+  atmosphere: 'dust',
 };
 
 export default function HomePage() {

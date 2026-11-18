@@ -56,7 +56,8 @@ const dj: SpotlightContent = {
       { label: 'Vibe', value: 'Deep, warm, late-night' },
     ],
   },
-  images: { base: '/assets/dj.webp', reveal: '/assets/djneon.webp' },
+  images: { base: '/assets/dj.webp', reveal: '/assets/djneon.webp', backdrop: '/assets/mars.webp' },
+  atmosphere: 'dust',
 };
 
 export default function DjPage() {

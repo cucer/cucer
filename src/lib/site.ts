@@ -9,9 +9,9 @@ export const siteConfig = {
   language: 'en',
   email: 'ucer.devops@gmail.com',
   gaMeasurementId: 'G-2VLW7KEBEF',
-  defaultTitle: 'Cagatay Ucer | Web & App Developer | React, Next.js, AI',
+  defaultTitle: 'Cagatay Ucer · Personal Site',
   defaultDescription:
-    'Cagatay Ucer builds web and mobile products with React, React Native and Next.js, plus AI and LLM integrations, from roadmap through to launch.',
+    'Good vibes, curious mind. Building with tech and AI along the way.',
   socialDescription:
     'Web and mobile products built with React, React Native and Next.js, plus AI and LLM integrations, from roadmap through to launch.',
   ogImage: '/assets/og-image.jpg',

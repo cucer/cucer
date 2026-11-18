@@ -22,24 +22,24 @@ const homeSchema = {
 };
 
 const home: SpotlightContent = {
-  headline: ['CAGATAY UCER', '//', 'APPS · WEB · AI'],
+  headline: ['CAGATAY UCER'],
   intro: [
-    'Today, knowledge is the sharpest blade you can carry. Web and mobile products, AI integrations, and end-to-end solutions and consulting for whatever your business needs.',
+    'Good vibes, curious mind. Building with tech and AI along the way.',
   ],
   card: {
-    title: 'AI Integration',
-    body: 'LLM features, retrieval and agents wired into products that already have users.',
+    title: 'Lately',
+    body: 'Playing with AI and seeing what it can do.',
     image: '/assets/card.webp',
     tag: 'Let’s connect',
   },
-  slogan: 'ONE CALL FOR EVERY TECH NEED',
+  slogan: 'STAY CURIOUS',
   specs: {
-    title: 'What I Deliver',
+    title: 'Into',
     rows: [
-      { label: 'Web', value: 'Sites & platforms that scale' },
-      { label: 'Mobile', value: 'iOS & Android apps' },
-      { label: 'AI', value: 'Automation & AI content' },
-      { label: 'Consulting', value: 'Strategy to launch' },
+      { label: 'Tech', value: 'Building things for fun' },
+      { label: 'AI', value: 'Always experimenting' },
+      { label: 'Travel', value: 'New places, new ideas' },
+      { label: 'Coffee', value: 'Non-negotiable' },
     ],
   },
   images: { base: '/assets/dev.webp', reveal: '/assets/devneon.webp' },

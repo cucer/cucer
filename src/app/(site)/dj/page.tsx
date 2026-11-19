@@ -45,7 +45,6 @@ const dj: SpotlightContent = {
     title: 'On Rotation',
     body: 'Mixing, producing and digging for new sounds.',
     image: '/assets/tt.webp',
-    tag: 'Let’s connect',
   },
   slogan: 'MACHINE MEETS SOUL',
   specs: {

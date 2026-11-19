@@ -31,7 +31,6 @@ const home: SpotlightContent = {
     title: 'Lately',
     body: 'Playing with AI and seeing what it can do.',
     image: '/assets/card.webp',
-    tag: 'Let’s connect',
   },
   slogan: 'STAY CURIOUS',
   specs: {

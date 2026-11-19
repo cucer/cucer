@@ -16,8 +16,9 @@ export type SpotlightContent = {
     title: string;
     body: string;
     image: string;
-    /* Drawn as a button, but only a label: it does nothing when clicked. */
-    tag: string;
+    /* Drawn as a button, but only a label: it does nothing when clicked.
+       Optional; the card simply has no button without it. */
+    tag?: string;
   };
   /* Short line in the top-right corner; on a phone it follows the intro. */
   slogan: string;
@@ -235,9 +236,11 @@ export default function SpotlightHero({ content }: { content: SpotlightContent }
               </h2>
               <FadeUp delay={1.05}>{card.body}</FadeUp>
             </div>
-            <span className={`${styles.cardTag} ${styles.fadeUp}`} style={{ animationDelay: '1.15s' }}>
-              {card.tag}
-            </span>
+            {card.tag && (
+              <span className={`${styles.cardTag} ${styles.fadeUp}`} style={{ animationDelay: '1.15s' }}>
+                {card.tag}
+              </span>
+            )}
           </article>
         </div>
 
